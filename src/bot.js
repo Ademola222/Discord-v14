@@ -4,9 +4,6 @@ const { User, Message, GuildMember, ThreadMember, GuildScheduledEvent, Reaction 
 
 const client = new Client({ intents: 3276799, partials: [User, Message, GuildMember, ThreadMember, GuildScheduledEvent, Reaction] });
 
-
-const { AutoKill } = require('autokill')
-
 client.config = require('../config.json')
 const { botMainColor, botErrorColor } = require('../config.json')
 
@@ -67,7 +64,7 @@ app.get('/', (req, res) => res.send('https://yaminehz.tk/discord'))
 app.listen(port, () =>
     console.log(`Your app is listening a https://yaminehz.tk:${port}`)
 );
-client.login("MTAyNDc0MDQxMTg5MTI2NTYwNw.GIDmEO.jojpfqfxNKtW6_BGM4Rhiz13iBSkjkAtjbPiNc").then(() => {
+client.login(process.env.token).then(() => {
     loadEvents(client);
     loadCommands(client);
     loadComponents(client);
